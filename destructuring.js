@@ -1,5 +1,5 @@
 /*
-  Once you complete a problem, refresh ./destructuring.html in your browser and check to see if the problem's test(s) are passing.
+  Once you complete a problem, refresh ./nesting.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
 
@@ -9,94 +9,184 @@
 ////////// PROBLEM 1 //////////
 
 // Do not edit the code below.
-var carDetails = {
-  color: 'red',
-  make: 'toyota',
-  model: 'tacoma',
-  year: 1994
-}
+var employees = [
+  {
+    "firstName": "Von",
+    "lastName": "Budibent",
+    "email": "vbudibent0@163.com",
+    "department": "Sales"
+  },
+  {
+    "firstName": "Catherina",
+    "lastName": "Swalowe",
+    "email": "cswalowe1@example.com",
+    "department": "Engineering"
+  },
+  {
+    "firstName": "Theo",
+    "lastName": "Trill",
+    "email": "ttrill2@sina.com.cn",
+    "department": "Services"
+  },
+  {
+    "firstName": "Elsy",
+    "lastName": "McCrorie",
+    "email": "emccrorie3@netscape.com",
+    "department": "Legal"
+  },
+  {
+    "firstName": "Lorie",
+    "lastName": "Handsheart",
+    "email": "lhandsheart4@fotki.com",
+    "department": "Research and Development"
+  }
+];
 // Do not edit the code above.
 
 /*
-  Use object destructuring to save the property values from the object carDetails into new variables. 
+  Create a function called 'employeeUpdater' that takes no parameters. employeeUpdater will loop over the array above and perform the following:
+    1. If employee's first name is Theo, remove that employee because he just got fired.
+    2. If the employee's first name is Lorie, change her department to 'HR'.
+    3. Return the updated employee array.
 */
 
 //Code Here
-
+function employeeUpdater(){
+  for (let key in employees){
+    if (employees[key].firstName === 'Theo'){
+      delete employees[key]
+    } else if (employees[key].firstName === 'Lorie'){
+      employees[key].department = "HR"
+    }
+  }
+  return employees
+}
 
 
 ////////// PROBLEM 2 //////////
 
+// Do not edit the code below.
+var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
+// Do not edit the code above.
+
 /*
-  In the function below named greeting, it is receiving an object as a parameter. 
-  Use object destructuring to save the object properties to new variables. 
-  The property names are firstName, lastName, and title.
+  The array above represents IDs tied to reported workplace accidents. 
+  An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are.
+    1. Write a function called 'removeDuplicates' that will remove all duplicate entries in the workplaceAccidents array.
+    2. Use nested for loops to check for duplicate numbers, and then remove the duplicates from the array.
+    3. Return the updated array.
 */
 
-function greeting( obj ) {
-  //Code Here
-  
-  // Do not edit the code below.
-  return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
-  // Do not edit the code above.
+//Code Here
+
+function removeDuplicates(){
+  for (let i = 0; i < workplaceAccidents.length; i++) {
+    for (let j = i + 1; j < workplaceAccidents.length; j++) {
+      if (workplaceAccidents[i] === workplaceAccidents[j]) {
+        workplaceAccidents.splice(j, 1);
+      }
+    }
+  } return workplaceAccidents
 }
-
-
 
 ////////// PROBLEM 3 //////////
 
+// Do not edit the code below.
+var cat = {
+  name: 'Fluffy',
+  catFriends: [
+    {
+      name: 'Grumpy',
+      activities: ['be grumpy', 'eat food']
+    }, 
+    {
+      name: 'Lazy Bones',
+      activities: ['sleep', 'pre-sleep naps']
+    }
+  ]
+}
+// Do not edit the code above.
+
 /*
-  Write a function called totalPopulation that will take in an object.
-  That object will have 4 properties named utah, california, texas and arizona.
-  The property values will be numbers.
-  Use object destructuring to save the property values to new variables.
-  Sum up the values and return the total number.
+  Fluffy has two friends, Grumpy and Lazy Bones. 
+    1. Assign the value of Grumpy's 2nd activity to the grumpyActivity variable below.
+    2. Assign fluffy2ndFriend the name of Fluffy's 2nd friend.
 */
 
 //Code Here
-
-
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 ////////// PROBLEM 4 //////////
 
+// Do not edit the code below.
+var myCar = {
+  make: 'Toyota',
+  model: 'Corolla',
+  year: 1992,
+  accidents: [
+    {
+      date: '3/15/93',
+      damage: '$5,000',
+      atFaultForAccident: true
+    },
+    {
+      date: '7/4/98',
+      damage: '$2,200',
+      atFaultForAccident: true
+    },
+    {
+      date: '6/22/99',
+      damage: '$7,900',
+      atFaultForAccident: true
+    }
+  ]
+}
+// Do not edit the code above.
+
 /*
-  Write a function called ingredients that will take in an object. 
-  This object will have 3 properties named carb, fat, and protein. 
-  The property values will be strings. 
-  Use object destructuring to save the property values to new variables. 
-  Push these new variables to an array and return the array. 
+  Above is some information about my car. As you can see, I am not the best driver.
+  I have caused a few accidents.
+  Please update this driving record so that I can feel better about my driving skills.
+    1. Write a function called recordCleaner.
+    2. Loop over the accidents array.
+    3. Change atFaultForAccident from true to false.
 */
 
 //Code Here
 
-
+function recordCleaner() {
+  for (let i = 0; i < myCar.accidents.length; i++) {
+    myCar.accidents[i].atFaultForAccident = false
+  }
+  return myCar
+}
 
 ////////// PROBLEM 5 //////////
 
+// Do not edit the code below.
+var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+// Do not edit the code above.
+
 /*
-  Now we will use object destructuring as the function's parameter instead of destructuring the object inside of the function declaration.
-  Example:
-    function example( {one, two, three} ) {
-      return one + two + three
+  Above is an array of arrays. Use two for loops.
+    1. Write a function called 'looper'. 
+    2. 'looper' should loop over the arrays.
+    3.  If the number is odd, replace it with 'odd'.
+        If the number is even, replace it with 'even'.
+    4. Return the modified numsArr.
+*/
+
+//Code Here
+function looper(){
+  for(let i = 0; i < numsArr.length; i++){
+    for(let j = 0; j < numsArr[i].length; j++){
+      if(numsArr[i][j] % 2 !== 0){
+        numsArr[i][j] = 'odd'
+      }
+      else if(numsArr[i][j] % 2 === 0){
+        numsArr[i][j] =  'even'
+      }
     }
-
-  Write a function called largeNumbers that will take a destructured object as it's parameter.
-  The object properties will be named first, second, and third and their values will be numbers.
-  Find the smallest number of the three and return that number.
-*/
-
-//Code Here
-
-
-
-////////// PROBLEM 6 //////////
-
-/*
-  Write a function called numberGroups that will take a destructured object as it's parameter.
-  The object properties will be named a, b, and c and their values will be arrays of numbers.
-  Find the longest array and return that array.
-*/
-
-//Code Here
-
-
+  }return numsArr
+}
